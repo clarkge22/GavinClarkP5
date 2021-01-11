@@ -1,15 +1,48 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class PromTicket {
 	
-public String Grade, ConfirmNum, NameFirst, NameLast, TicketType;
-public int Price;
+public String ConfirmNum, NameFirst, NameLast, TicketType, grade;
+public int Price, people, Grade;
 
-public PromTicket(String firstName, String lastName, String grade, int people) {
+public PromTicket(String firstName, String lastName) {
 	NameFirst = firstName;
 	NameLast = lastName;
-	Grade = grade;
+	
+	
+	Scanner scanner = new Scanner(System.in);
+	
+	System.out.println("Please select a grade.");
+	System.out.println("1 = Senior");
+	System.out.println("2 = Junior");
+	System.out.println("3 = Sophomore");
+	System.out.println("4 = Freshman");
+	Grade = scanner.nextInt();
+	
+	System.out.println("Please enter number of people.");
+	people = scanner.nextInt();
+	
+	scanner.close();
+	
 	Price = 0;
+
+	
+	if(Grade==1) {
+		grade = "senior";
+	}
+	if(Grade==2) {
+		grade = "junior";
+	}
+	if(Grade==3) {
+		grade = "sophomore";
+	}
+	if(Grade==4) {
+		grade = "freshman";
+	}
+	
+	
+
 	if(people==2) {
 	TicketType = "couple";
 	}
@@ -21,65 +54,53 @@ public PromTicket(String firstName, String lastName, String grade, int people) {
 	if(people==1) {
 	TicketType = "solo";
 	}
+	
+	
+	if(Grade==1)
 
-		if(Grade.toLowerCase().startsWith("s")&&Grade.toLowerCase().endsWith("r")&&TicketType=="solo") {
+		if(Grade==1&&TicketType=="solo") {
 			Price = 40;
-			return;
 		}
-		if(Grade.toLowerCase().startsWith("s")&&Grade.toLowerCase().endsWith("r")&&TicketType=="couple") {
+		if(Grade==1&&TicketType=="couple") {
 			Price = 60;
-			return;
 		}
-		if(Grade.toLowerCase().startsWith("s")&&Grade.toLowerCase().endsWith("r")&&TicketType=="group") {
+		if(Grade==1&&TicketType=="group") {
 			Price = 100;
-			return;
 		}
 		
 		
-		if(Grade.toLowerCase().startsWith("j")&&TicketType=="solo") {
+		if(Grade==2&&TicketType=="solo") {
 			Price = 45;
-			return;
 		}
-		if(Grade.toLowerCase().startsWith("j")&&TicketType=="couple") {
+		if(Grade==2&&TicketType=="couple") {
 			Price = 68;
-			return;
 		}
-		if(Grade.toLowerCase().startsWith("j")&&TicketType=="group") {
+		if(Grade==2&&TicketType=="group") {
 			Price = 113;
-			return;
 		}
 		
 		
-		if(Grade.toLowerCase().startsWith("s")&&TicketType=="solo") {
+		if(Grade==3&&TicketType=="solo") {
 			Price = 55;
-			return;
 		}
-		if(Grade.toLowerCase().startsWith("s")&&TicketType=="couple") {
+		if(Grade==3&&TicketType=="couple") {
 			Price = 83;
-			return;
 		}
-		if(Grade.toLowerCase().startsWith("s")&&TicketType=="group") {
+		if(Grade==3&&TicketType=="group") {
 			Price = 138;
-			return;
 		}
 
 		
-		if(Grade.toLowerCase().startsWith("f")&&TicketType=="solo") {
+		if(Grade==4&&TicketType=="solo") {
 			Price = 65;
-			return;
 		}
-		if(Grade.toLowerCase().startsWith("f")&&TicketType=="couple") {
+		if(Grade==4&&TicketType=="couple") {
 			Price = 98;
-			return;
 		}
-		if(Grade.toLowerCase().startsWith("f")&&TicketType=="group") {
+		if(Grade==4&&TicketType=="group") {
 			Price = 163;
-			return;
 		}
 	}
-
-
-
 
     public void Confirmation() {
 		String UpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -88,7 +109,7 @@ public PromTicket(String firstName, String lastName, String grade, int people) {
         String Chars = UpperCase + LowerCase + digits;
         int length = 6;
         String randomString = generateRandomString(length, Chars);
-        System.out.print(NameFirst+" "+NameLast+" purchased a "+Grade+" "+TicketType+" ticket for $"+Price+".00. The confirmation number for this sale is ");
+        System.out.print(NameFirst+" "+NameLast+" purchased a "+grade+" "+TicketType+" ticket for $"+Price+".00. The confirmation number for this sale is ");
         System.out.print(randomString);    
         }
  
